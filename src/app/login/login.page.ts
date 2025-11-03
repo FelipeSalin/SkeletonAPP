@@ -7,7 +7,7 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
   standalone: false,
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   /**
    * Se genera el modelo user con dos claves
    * cada clave tiene su valor inicial
@@ -18,8 +18,6 @@ export class LoginPage implements OnInit {
   }
   constructor(private router: Router) { } // Se debe instanciar
 
-  ngOnInit() {
-  }
   ingresar(){
     // Se declara e instancia un elemento de tipo NavigationExtras
     let navigationExtras: NavigationExtras = {
