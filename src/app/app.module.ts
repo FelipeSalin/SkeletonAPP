@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
-import { PipesComponent } from './components/pipes/pipes.component';
+//import { PipesComponent } from './components/pipes/pipes.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { LOCALE_ID } from '@angular/core';
@@ -14,9 +14,9 @@ import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs);
 
 @NgModule({
-  declarations: [AppComponent, PipesComponent],
+  declarations: [AppComponent], //, PipesComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, provide: LOCALE_ID, useValue:"es" }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}], //provide: LOCALE_ID, useValue:"es" }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
