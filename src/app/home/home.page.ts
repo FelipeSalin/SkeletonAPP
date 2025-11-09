@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   usuario: string = '';
+  fechaNacimiento: Date | null = null;
   niveles:any[]=[
     {id:1,nivel:"Basica Incompleta"},
     {id:2,nivel:"Basica Completa"},

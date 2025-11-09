@@ -1,6 +1,9 @@
 <!-- Comienza el Header -->
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       App Música Chilena
     </ion-title>
@@ -24,23 +27,25 @@
     <h4>Información Adicional</h4>
   </b>
   <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked">Nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="data.nombre"></ion-input>
+    <ion-label position="stacked" style="color: white;">Nombre</ion-label>
+    <ion-input placeholder="Ingrese su nombre" type="text" [(ngModel)]="data.nombre"></ion-input>
   </ion-item>
   <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked">Apellido</ion-label>
-    <ion-input type="text" [(ngModel)]="data.apellido"></ion-input>
+    <ion-label position="stacked" style="color: white;">Apellido</ion-label>
+    <ion-input placeholder="Ingrese su apellido" type="text" [(ngModel)]="data.apellido"></ion-input>
   </ion-item>
   <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked" class="ion-padding-bottom">Educación</ion-label>
-    <ion-select placeholder="Seleccione nivel" [(ngModel)]="data.education">
+    <ion-label position="stacked" class="ion-padding-bottom" style="color: white;">Educación</ion-label>
+    <ion-select placeholder="Seleccione nivel" style="color: white;" [(ngModel)]="data.education">
       <ion-select-option *ngFor="let niv of niveles" [value]="niv.id">{{niv.nivel}}</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked" class="ion-padding-bottom">Fecha Nacimiento</ion-label>
-    <ion-input type="date" [(ngModel)]="data.nacimiento"></ion-input>
-  </ion-item>
+  <mat-form-field appearance="outline" style="width:100%; background-color: black;">
+    <mat-label style="color: white;">Fecha de nacimiento</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
   <ion-grid>
     <ion-row>
       <ion-col col-6>
