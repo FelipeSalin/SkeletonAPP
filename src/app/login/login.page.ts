@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginPage {
     usuario:"",
     password:""
   }
-  constructor(private router: Router, private alertController: AlertController) { } // Se debe instanciar
+  constructor(private router: Router, private navCtrl: NavController, private alertController: AlertController) { } // Se debe instanciar
 
   // Método para mostrar alerta de error
   async mostrarAlerta(mensaje: string) {
@@ -62,6 +62,11 @@ export class LoginPage {
 
     // Si todas las validaciones son correctas, navega a la página "home"
     this.router.navigate(['/home'], { state: { user: this.user.usuario } });
+  }
+
+  registro()
+  {
+    this.navCtrl.navigateForward(['/registro']);
   }
 
   ingresar(){

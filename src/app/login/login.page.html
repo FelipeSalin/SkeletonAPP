@@ -14,7 +14,7 @@
     <img src="/../../assets/img/vinilo.png" alt="logo" class="logo">
   </div>
   
-  <ion-card>
+  <ion-card class="login-card">
 
     <ion-card-header>
       <ion-card-title>¡Bienvenido!</ion-card-title>
@@ -22,14 +22,14 @@
 
     <ion-card-content>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Usuario</ion-label>
+      <ion-item class="input-item" lines="full">
+        <ion-label position="floating" color="primary">Usuario</ion-label>
         <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
         <ion-input type="text" [(ngModel)]="user.usuario" placeholder="Ingrese su nombre de usuario"></ion-input>
       </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating">Password</ion-label>
+      <ion-item class="input-item" lines="full">
+        <ion-label position="floating" color="primary">Password</ion-label>
         <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
         <ion-input type="password" [(ngModel)]="user.password" placeholder="Ingrese su contraseña"></ion-input>
       </ion-item>
@@ -37,7 +37,13 @@
       <ion-row>
         <ion-col>
           <!-- Indicamos mediante el (click) la funcion a quien referenciara-->
-          <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+          <ion-button expand="block" (click)="login()" class="login-button">Ingresar</ion-button>
+
+          <ion-button expand="block" (click)="registro()" fill="clear" class="register-button">Registrarse</ion-button>
+
+          <ion-text class="forgot-password" color="medium">
+            <a href="#">Olvidaste tu constraseña</a>
+          </ion-text>
         </ion-col>
       </ion-row>
       
