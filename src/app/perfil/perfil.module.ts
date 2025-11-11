@@ -9,6 +9,13 @@ import { CompanyLogoComponent } from '../company-logo/company-logo.component';
 
 import { PerfilPage } from './perfil.page';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +23,12 @@ import { PerfilPage } from './perfil.page';
     IonicModule,
     PerfilPageRoutingModule,
     CompanyLogoComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   declarations: [PerfilPage]
 })
