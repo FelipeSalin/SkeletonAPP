@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { CompanyLogoComponent } from '../company-logo/company-logo.component';
 
 import { MatSliderModule } from '@angular/material/slider';
 
@@ -25,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    CompanyLogoComponent,
   ],
   declarations: [HomePage]
 })

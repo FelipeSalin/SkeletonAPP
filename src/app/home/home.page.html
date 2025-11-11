@@ -1,18 +1,21 @@
 <!-- Comienza el Header -->
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+  <ion-toolbar>
+    <app-company-logo [companyLogo]="'Música Chilena'"></app-company-logo>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      App Música Chilena
-    </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <!-- Termina el Header -->
 
 <!-- Comienza el Content -->
-<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Imagen de usuario-->
+  <div class="user-info">
+    <img src="../../assets/img/usuario.png" alt="User Avatar" class="user-avatar"/>
+  </div>
   <ion-title class="ion-padding-top ion-text-center">
     <ion-label>
       <h1>¡Bienvenido!</h1>
@@ -23,29 +26,63 @@
       <p *ngIf="usuario">Usuario: {{usuario}}</p>
     </ion-label>
   </ion-title>
-  <b class="ion-text-center">
-    <h4>Información Adicional</h4>
-  </b>
-  <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked" style="color: white;">Nombre</ion-label>
-    <ion-input placeholder="Ingrese su nombre" type="text" [(ngModel)]="data.nombre"></ion-input>
-  </ion-item>
-  <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked" style="color: white;">Apellido</ion-label>
-    <ion-input placeholder="Ingrese su apellido" type="text" [(ngModel)]="data.apellido"></ion-input>
-  </ion-item>
-  <ion-item class="ion-padding-horizontal">
-    <ion-label position="stacked" class="ion-padding-bottom" style="color: white;">Educación</ion-label>
-    <ion-select placeholder="Seleccione nivel" style="color: white;" [(ngModel)]="data.education">
-      <ion-select-option *ngFor="let niv of niveles" [value]="niv.id">{{niv.nivel}}</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <mat-form-field appearance="outline" style="width:100%; background-color: black;">
-    <mat-label style="color: white;">Fecha de nacimiento</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="fechaNacimiento">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+
+
+  <div class="recomendaciones-info">
+    <h2>Recomendaciones</h2>
+  </div>
+
+  <!-- Cards de Recomendaciones -->
+  <ion-card>
+    <img src="../../assets/img/punto_medio_lp1.jpg" alt="Sin destino"/>
+    <ion-card-header>
+      <ion-card-title>puntomedio - Sin destino</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Primer Long Play de la banda "puntomedio", con sonidos melancólicos provenientes de fusión Jazz/Rap
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="../../assets/img/amanitas_ep2.jpg" alt="Todo Es Circular"/>
+    <ion-card-header>
+      <ion-card-title>Amanitas - Todo Es Circular</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      El regreso de "Amanitas" con su nuevo EP, con un sonido renovado, pero con la misma energía
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="../../assets/img/kurisou_lp1.jpg" alt="atardeceres en mundos alienígenas"/>
+    <ion-card-header>
+      <ion-card-title>kurisou - atardeceres en mundos alienígenas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Álbum debut del compositor "kurisou", con sonidos ambient y samples que se mezclan en tu cabeza
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="../../assets/img/alfilera_lp1.jpg" alt="Detrás de las Palabras"/>
+    <ion-card-header>
+      <ion-card-title>Alfilera - Detrás de las Palabras</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Es el primer LP que lanza "Alfilera", con una mirada instrospectiva y vulnerable transmite con su voz variados sentimientos
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="../../assets/img/los_guinas_ep1.jpg" alt="Dolores y Placeres"/>
+    <ion-card-header>
+      <ion-card-title>Los Güiñas - Dolores y Placeres</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      "Los Güiñas" llegan con su primer Extended Play para mostrarnos las 2 caras de una misma moneda con sus guitarras llenas de overdrive y letras potentes
+    </ion-card-content>
+  </ion-card>
+
   <ion-grid>
     <ion-row>
       <ion-col col-6>

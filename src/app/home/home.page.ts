@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { AlertController, MenuController } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
+export class HomePage implements OnInit {
   usuario: string = '';
+  email: string = '';
+  password: string = '';
   fechaNacimiento: Date | null = null;
   niveles:any[]=[
     {id:1,nivel:"Basica Incompleta"},
@@ -25,13 +27,25 @@ export class HomePage {
     education:"",
     nacimiento:""
   };
-  constructor(public alertController: AlertController, private router: Router) {
+  constructor(public alertController: AlertController, private router: Router, private route: ActivatedRoute, private menu: MenuController) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras?.state) {
       this.usuario = navigation.extras.state['user'] || '';
       console.log('Usuario recibido:', this.usuario);
     }
   }
+
+  ngOnInit() {
+
+      this.menu.close("mainMenu");
+      
+      // Obtener los parámetros de la URL
+      this.route.queryParams.subscribe(params => {
+        this.email = params['email'];
+        this.password = params['password'];
+      });
+    }
+
   /**
    * Metodo limpíar recorre un objeto y se define el 
    * valor de su propiedad en ""
