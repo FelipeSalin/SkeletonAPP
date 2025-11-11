@@ -38,12 +38,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
 
       this.menu.close("mainMenu");
-      
-      // Obtener los parámetros de la URL
-      this.route.queryParams.subscribe(params => {
-        this.email = params['email'];
-        this.password = params['password'];
-      });
+
     }
 
   /**
