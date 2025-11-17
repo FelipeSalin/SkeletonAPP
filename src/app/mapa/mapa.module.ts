@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MapaPageRoutingModule } from './mapa-routing.module';
+import { CompanyLogoComponent } from '../company-logo/company-logo.component';
 
 import { MapaPage } from './mapa.page';
 
@@ -13,7 +14,8 @@ import { MapaPage } from './mapa.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MapaPageRoutingModule
+    MapaPageRoutingModule,
+    CompanyLogoComponent,
   ],
   declarations: [MapaPage]
 })
