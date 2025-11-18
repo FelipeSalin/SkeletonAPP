@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'mapa',
     loadChildren: () => import('./mapa/mapa.module').then( m => m.MapaPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
 ];
 
 @NgModule({
