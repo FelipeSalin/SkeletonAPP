@@ -12,6 +12,7 @@ export class AppComponent {
   constructor(private menu: MenuController, private router: Router) {}
 
   cerrarSesion() {
+    localStorage.removeItem('usuarioActivo');
     console.log('Sesión cerrada');
     this.menu.close('mainMenu'); // Cierra el menú
     this.router.navigate(['/login']);

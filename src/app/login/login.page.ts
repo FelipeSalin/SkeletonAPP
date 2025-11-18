@@ -60,6 +60,9 @@ export class LoginPage {
       return;
     }
 
+    // Si todas las validaciones son correctas
+    localStorage.setItem('usuarioActivo', 'true'); // <-- Simula sesión iniciada
+
     // Si todas las validaciones son correctas, navega a la página "home"
     this.router.navigate(['/home'], { state: { user: this.user.usuario } });
   }
