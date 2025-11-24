@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, MenuController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   standalone: false,
 })
 export class HomePage implements OnInit {
-  usuario: string = '';
+
+  usuarioRecibido: string='';
+  passwordRecibido: string='';
+  /*usuario: string = '';
   email: string = '';
   password: string = '';
   fechaNacimiento: Date | null = null;
@@ -26,13 +29,24 @@ export class HomePage implements OnInit {
     apellido:"",
     education:"",
     nacimiento:""
-  };
-  constructor(public alertController: AlertController, private router: Router, private route: ActivatedRoute, private menu: MenuController) {
-    const navigation = this.router.getCurrentNavigation();
+  };*/
+  constructor(private alertController: AlertController, 
+              private router: Router, 
+              private activateroute: ActivatedRoute, 
+              private menu: MenuController) {
+    this.activateroute.queryParams.subscribe( params =>{
+      if(this.router.getCurrentNavigation()?.extras?.state){
+
+        this.usuarioRecibido = this.router.getCurrentNavigation()?.extras?.state?.['usuarioEnviado'];
+        this.passwordRecibido = this.router.getCurrentNavigation()?.extras?.state?.['passwordEnviado'];
+
+      }
+    })
+    /*const navigation = this.router.getCurrentNavigation();
     if (navigation?.extras?.state) {
       this.usuario = navigation.extras.state['user'] || '';
       console.log('Usuario recibido:', this.usuario);
-    }
+    }*/
   }
 
   ngOnInit() {
@@ -45,20 +59,20 @@ export class HomePage implements OnInit {
    * Metodo limpíar recorre un objeto y se define el 
    * valor de su propiedad en ""
    */
-  limpiar(){
+  /*limpiar(){
     for (var [key, value] of Object.entries(this.data)) {
       Object.defineProperty(this.data,key,{value:""})
     }
-  }
+  }*/
 
-  mostrar(){
+  /*mostrar(){
     (this.data.nombre!="" && this.data.apellido!="") && 
     this.presentAlert("Usuario","Su nombre es "+this.data.nombre+" "+this.data.apellido);
-  }
+  }*/
 
   async presentAlert(titulo:string,message:string) {
     const alert = await this.alertController.create({
-      header: titulo,
+      header: 'Mensaje',
       message: message,
       buttons: ['OK']
     });

@@ -42,7 +42,7 @@ export class RegistroPage implements OnInit {
   // Método para mostrar alerta de error
   async mostrarAlerta(mensaje: string) {
     const alert = await this.alertController.create({
-      header: 'Error',
+      header: 'Mensaje',
       message: mensaje,
       buttons: ['OK']
     });
