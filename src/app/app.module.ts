@@ -7,6 +7,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 //import { PipesComponent } from './components/pipes/pipes.component';
 import { AppRoutingModule } from './app-routing.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 import { LOCALE_ID } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
@@ -23,7 +26,7 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [AppComponent], //, PipesComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, BrowserAnimationsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}], //provide: LOCALE_ID, useValue:"es" }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, SQLite, provideAnimationsAsync()], //provide: LOCALE_ID, useValue:"es" }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
+import { Dbservice } from '../dbservice';
 
 @Component({
   selector: 'app-registro',
@@ -8,9 +9,24 @@ import { NavController, AlertController } from '@ionic/angular';
   styleUrls: ['./registro.page.scss'],
   standalone: false,
 })
-export class RegistroPage {
+export class RegistroPage implements OnInit {
 
-  constructor(private router: Router, private navCtrl: NavController, private alertController: AlertController) { } // Se debe instanciar
+  isDBReady: boolean = false;
+
+  constructor(private router: Router,
+              private activateroute: ActivatedRoute,
+              private navCtrl: NavController,
+              private alertController: AlertController,
+              private dbService: Dbservice) { } // Se debe instanciar
+
+  ngOnInit() {
+    this.dbService.getIsDBReady().subscribe(isReady => {
+      this.isDBReady = isReady;
+      if (isReady) {
+        // Aquí puedes llamar a funciones para cargar datos, etc. desde la base de datos
+      }
+    });
+  }
 
   usuario={
     email:"",
@@ -22,8 +38,6 @@ export class RegistroPage {
   }
 
   password2: string = "";
-
-  usuarios: string[] = [this.usuario.email, this.usuario.nombre, this.usuario.apellido, this.usuario.username, this.usuario.password, this.usuario.nacimiento];
 
   // Método para mostrar alerta de error
   async mostrarAlerta(mensaje: string) {
@@ -42,6 +56,12 @@ export class RegistroPage {
   }
 
   registro() {
+    // Verificar que base de datos esté lista
+    if (!this.isDBReady) {
+      this.mostrarAlerta('La base de datos aún no está lista.');
+      return;
+    }
+
     // Verificar que el campo de correo no esté vacío
     if (!this.usuario.email) {
       this.mostrarAlerta('El campo de email no puede estar vacío.');
@@ -101,13 +121,23 @@ export class RegistroPage {
       this.mostrarAlerta('El campo de fecha de nacimiento no puede estar vacía.');
       return;
     }
+    
+    this.guardarDatos();
 
     // Si todas las validaciones son correctas, navega a la página "home"
     this.router.navigate(['/home'], { state: { user: this.usuario.username } });
   }
 
-  agregarUsuario() {
-    
+  guardarDatos() {
+    this.dbService.insertUsuario(this.usuario.username, this.usuario.password, this.usuario.nombre, this.usuario.apellido, this.usuario.email, this.usuario.nacimiento)
+      .then(() => {
+        this.mostrarAlerta('Datos guardados exitosamente');
+        // Aquí puedes añadir lógica adicional, como mostrar un mensaje de éxito al usuario.
+      })
+      .catch(error => {
+        this.mostrarAlerta('Error al guardar datos:' + error);
+        // Aquí puedes manejar el error, por ejemplo, mostrar un mensaje de error al usuario.
+      });
   }
 
   limpiar(){
@@ -115,4 +145,16 @@ export class RegistroPage {
       Object.defineProperty(this.usuario,key,{value:""})
     }
   }
+
+  limpiar2() {
+  this.usuario = {
+    email: "",
+    nombre: "",
+    apellido: "",
+    username: "",
+    password: "",
+    nacimiento: ""
+  };
+  this.password2 = "";
+}
 }
