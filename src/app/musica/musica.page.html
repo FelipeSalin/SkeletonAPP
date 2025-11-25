@@ -9,9 +9,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">musica</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <ion-label>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Formulario para agregar una nueva publicación -->
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input [(ngModel)]="post.title" placeholder="Ingresa un título para el post"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Cuerpo</ion-label>
+    <ion-input [(ngModel)]="post.body" placeholder="Ingresa una descripción para el post"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="guardarPost()">Agregar publicación</ion-button>
+
 </ion-content>

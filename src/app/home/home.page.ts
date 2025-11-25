@@ -12,6 +12,7 @@ export class HomePage implements OnInit {
 
   usuarioRecibido: string='';
   passwordRecibido: string='';
+
   /*usuario: string = '';
   email: string = '';
   password: string = '';
