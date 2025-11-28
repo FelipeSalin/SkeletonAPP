@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { CompanyLogoComponent } from '../company-logo/company-logo.component';
+import { CompanyLogoComponent } from '../components/company-logo/company-logo.component';
 
 import { MatSliderModule } from '@angular/material/slider';
 

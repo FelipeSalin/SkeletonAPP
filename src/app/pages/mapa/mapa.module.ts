@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MapaPageRoutingModule } from './mapa-routing.module';
-import { CompanyLogoComponent } from '../../company-logo/company-logo.component';
+import { CompanyLogoComponent } from '../../components/company-logo/company-logo.component';
 
 import { MapaPage } from './mapa.page';
 

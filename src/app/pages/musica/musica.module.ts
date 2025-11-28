@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { MusicaPageRoutingModule } from './musica-routing.module';
-import { CompanyLogoComponent } from '../../company-logo/company-logo.component';
+import { CompanyLogoComponent } from '../../components/company-logo/company-logo.component';
 
 import { MusicaPage } from './musica.page';
 
