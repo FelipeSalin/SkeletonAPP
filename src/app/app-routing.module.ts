@@ -5,7 +5,7 @@ import { AuthGuard } from './guards/auth-guard';
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: '',
@@ -19,21 +19,21 @@ const routes: Routes = [
   },
   {
     path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'musica',
-    loadChildren: () => import('./musica/musica.module').then( m => m.MusicaPageModule),
+    loadChildren: () => import('./pages/musica/musica.module').then( m => m.MusicaPageModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'mapa',
-    loadChildren: () => import('./mapa/mapa.module').then( m => m.MapaPageModule),
+    loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule),
     canActivate: [AuthGuard]
   },
   {

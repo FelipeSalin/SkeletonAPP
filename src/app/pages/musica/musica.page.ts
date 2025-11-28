@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../api';
+import { ApiService } from '../../services/apiService/api';
 
 @Component({
   selector: 'app-musica',

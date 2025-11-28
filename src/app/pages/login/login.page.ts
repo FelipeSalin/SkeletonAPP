@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
-import { Dbservice } from '../dbservice';
+import { Dbservice } from '../../services/dbService/dbservice';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +48,7 @@ export class LoginPage {
       this.router.navigate(['/home'],NavigationExtras);
     } else {
       // Usuario inválido, mostrar mensaje de error
-      this.mostrarAlerta('Credenciales inválidas');
+      this.mostrarAlerta('Nombre de usuario o contraseña incorrectos.');
     }
   }
 

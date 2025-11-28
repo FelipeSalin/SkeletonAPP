@@ -64,6 +64,8 @@ export class Dbservice {
     .catch(error => this.presentToast('Error al insertar usuario:' + error));
   }
 
+  // FALTARÍA DELETE/ELIMINAR Y UPDATE/ACTUALIZAR DE USUARIO
+
   private async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,

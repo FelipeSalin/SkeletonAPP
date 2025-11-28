@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PerfilPageRoutingModule } from './perfil-routing.module';
-import { CompanyLogoComponent } from '../company-logo/company-logo.component';
+import { CompanyLogoComponent } from '../../company-logo/company-logo.component';
 
 import { PerfilPage } from './perfil.page';
 

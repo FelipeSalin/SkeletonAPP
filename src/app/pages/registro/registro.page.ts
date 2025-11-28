@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
-import { Dbservice } from '../dbservice';
+import { Dbservice } from '../../services/dbService/dbservice';
 
 @Component({
   selector: 'app-registro',
