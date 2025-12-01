@@ -17,7 +17,7 @@ export class ApiService {
 
   // Se establece la base url del API a consumir
   // apiURL = 'https://jsonplaceholder.typicode.com'; // Fuente Original funciona solo get
-  private apiURL = 'https://jsonplaceholder.typicode.com/comments'; // Ejecuta json-server -H ip .\dv.json para ejecutar un Fake APIRest
+  private apiURL = 'http://10.0.2.2:3000'; /*'https://jsonplaceholder.typicode.com/comments' 'http://localhost:3000' */ // Ejecuta json-server -H ip .\dv.json para ejecutar un Fake APIRest
 
   constructor(private http:HttpClient) {}
 
@@ -44,7 +44,7 @@ export class ApiService {
 
   //Función que permite traer un registro identidicado en id
   getPost(id:any):Observable<any>{
-    return this.http.get(this.apiURL+'/posts/').pipe(
+    return this.http.get(this.apiURL+'/posts/'+id).pipe(
       retry(3)
     );
   }
@@ -63,7 +63,7 @@ export class ApiService {
   }
 
   //Función que permite eliminar un registro determinado por id de la Api
-  deletePost(id: number):Observable<any>{
+  deletePost(id: any):Observable<any>{
     return this.http.delete(this.apiURL+'/posts/'+id,this.httpOptions);
   }
 }

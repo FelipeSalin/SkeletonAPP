@@ -15,7 +15,6 @@ export class MusicaPage implements OnInit {
   users: any;
   posts: any;
   post: any={
-    id: null,
     title: "",
     body: "",
     userId: null
@@ -29,6 +28,10 @@ export class MusicaPage implements OnInit {
   ionViewWillEnter(){
     this.getUsuarios();
     this.getPosts();
+  }
+
+  ngOnInit() {
+    this.menu.close("mainMenu");
   }
 
   getUsuario(userId: any){
@@ -81,11 +84,22 @@ export class MusicaPage implements OnInit {
     }
   }
 
+  /*
   setPost(_post: any){
     this.post=_post;
     this.getUsuario(_post.userId);
     this.compareWith = this.compareWithFn;
   }
+  */
+
+
+  setPost(_post: any) {
+  this.post = _post;
+  // Busca el usuario correspondiente y asigna a this.user
+  this.user = this.users.find((u: any) => u.id === _post.userId);
+  this.compareWith = this.compareWithFn;
+}
+
 
   eliminarPost(_post: any){
     console.log("eliminar")
@@ -104,8 +118,12 @@ export class MusicaPage implements OnInit {
     return o1 && o2 ? o1.id === o2.id : o1 === o2;
   };
 
-  ngOnInit() {
-    this.menu.close("mainMenu");
-  }
-
+  limpiar() {
+  this.post = {
+    title: "",
+    body: "",
+    userId: null
+  };
+  this.user = null; // también puedes limpiar el select
+}
 }

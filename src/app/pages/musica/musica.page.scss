@@ -28,7 +28,6 @@ h6 {
     }
 }
 
-
 ion-card {
     background: #000000;
     border-radius: 10px;
@@ -43,13 +42,53 @@ ion-card-header {
     text-align: center;
 }
 
+ion-list-header {
+    text-align: center;
+}
+
 ion-item {
     --background: transparent;
+}
+
+ion-select {
+  --color: #fff;            /* texto seleccionado */
+  --placeholder-color: #aaa;
+  --placeholder-opacity: 1;
+  --icon-color: #fff;       /* flecha */
+}
+
+ion-item ion-select::part(text) {
+  color: #fff !important;   /* Fuerza el texto dentro del Shadow DOM */
+}
+
+ion-item ion-select::part(placeholder) {
+  color: #aaa !important;   /* placeholder adentro */
+}
+
+ion-select .select-text {
+  color: #fff !important;
+}
+
+ion-select-option {
+  --background: #000; /* fondo negro */
+  --color: #fff; /* texto blanco */
 }
 
 ion-input {
     --padding-start: 10px;
     --color: #fff;
+    --placeholder-color: #aaa;
+    --placeholder-opacity: 1;
+}
+
+ion-textarea {
+    --color: #fff;
+    --placeholder-color: #aaa;
+    --placeholder-opacity: 1;
+}
+
+ion-label {
+    color: #ccc;
 }
 
 ion-button {

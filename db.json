@@ -1,27 +1,36 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Juan Pérez"
+    },
+    {
+      "id": 2,
+      "name": "María López"
+    },
+    {
+      "id": 3,
+      "name": "Carlos Muñoz"
+    }
+  ],
   "posts": [
     {
       "id": "1",
-      "title": "a title"
+      "title": "Nuevo disco de artista 1",
+      "body": "Descripción del usuario Juan Pérez, su opinión acerca de nuevo disco de artista 1.",
+      "userId": 1
     },
     {
       "id": "2",
-      "title": "another title"
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "edited comment about post 1",
-      "postId": "1"
+      "title": "Un repaso de la discografía de la banda 3",
+      "body": "María López enseña y explica un poco sobre la discografía de una de sus bandas favoritas.",
+      "userId": 2
     },
     {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "id": "3",
+      "title": "Post sobre la historia de la canción 'x' de artista 3",
+      "body": "Carlos Muñoz nos explica sobre la historia de una canción, el cómo se grabó",
+      "userId": 3
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
