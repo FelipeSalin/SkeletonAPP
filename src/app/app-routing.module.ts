@@ -27,8 +27,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'musica',
-    loadChildren: () => import('./pages/musica/musica.module').then( m => m.MusicaPageModule),
+    path: 'camara',
+    loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule),
     canActivate: [AuthGuard]
   },
   {
@@ -37,12 +37,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: '**',
-    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+    path: 'musica',
+    loadChildren: () => import('./pages/musica/musica.module').then( m => m.MusicaPageModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: 'camara',
-    loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule)
+    path: '**',
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },
 ];
 

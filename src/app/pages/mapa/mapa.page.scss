@@ -28,7 +28,6 @@ h6 {
     }
 }
 
-
 ion-card {
     background: #000000;
     border-radius: 10px;
@@ -58,6 +57,8 @@ ion-button {
     --border-radius: 20px;
     --box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
     margin-top: 1rem;
+    margin: 1rem auto 0 auto; /* top auto bottom auto */
+    display: block;
 }
 
 ion-button:hover {

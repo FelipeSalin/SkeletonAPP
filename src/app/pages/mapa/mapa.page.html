@@ -1,7 +1,8 @@
 <!-- Comienza el Header -->
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <app-company-logo [companyLogo]="'Música Chilena'"></app-company-logo>
+    <ion-title slot="primary">Mapa</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button menu="mainMenu"></ion-menu-button>
     </ion-buttons>
@@ -14,4 +15,10 @@
       <ion-title size="large">mapa</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="container">
+    <ion-button (click)="getLocationAndShowOnMap()">Obtener ubicación</ion-button>
+    <iframe id="mapFrame" src="" width="100%" height="400px" frameborder="0" style="border:0; margin-top: 10px;" allowfullscreen>
+    </iframe>
+  </div>
 </ion-content>

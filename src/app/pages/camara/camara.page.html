@@ -1,13 +1,23 @@
+<!-- Comienza el Header -->
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>camara</ion-title>
+  <ion-toolbar color="warning">
+    <app-company-logo [companyLogo]="'Música Chilena'"></app-company-logo>
+    <ion-title slot="primary">Cámara</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">camara</ion-title>
+      <ion-title size="large">usocamara</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="container">
+    <ion-button (click)="takePicture()">Capturar imagen</ion-button>
+    <img *ngIf="imageSource" src="{{imageSource}}" alt="image" style="width: 100%; max-width: 250px;">
+  </div>
 </ion-content>

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { RegistroPageRoutingModule } from './registro-routing.module';
+import { CompanyLogoComponent } from '../../components/company-logo/company-logo.component';
 
 import { RegistroPage } from './registro.page';
 
@@ -24,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    CompanyLogoComponent,
   ],
   declarations: [RegistroPage]
 })

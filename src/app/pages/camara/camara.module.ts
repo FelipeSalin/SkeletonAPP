@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { CamaraPageRoutingModule } from './camara-routing.module';
+import { CompanyLogoComponent } from '../../components/company-logo/company-logo.component';
 
 import { CamaraPage } from './camara.page';
 
@@ -13,7 +14,8 @@ import { CamaraPage } from './camara.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CamaraPageRoutingModule
+    CamaraPageRoutingModule,
+    CompanyLogoComponent,
   ],
   declarations: [CamaraPage]
 })
