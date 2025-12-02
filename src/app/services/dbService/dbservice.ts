@@ -64,7 +64,29 @@ export class Dbservice {
     .catch(error => this.presentToast('Error al insertar usuario:' + error));
   }
 
-  // FALTARÍA DELETE/ELIMINAR Y UPDATE/ACTUALIZAR DE USUARIO
+  deleteUsuario(id: number) {
+    return this.db.executeSql(`
+      DELETE FROM usuarios WHERE id = ?;
+    `, [id])
+    .then(() => this.presentToast('Usuario eliminado correctamente'))
+    .catch(error => this.presentToast('Error al eliminar usuario:' + error));
+  }
+
+  updateEmail(id: number, email: string) {
+    return this.db.executeSql(`
+      UPDATE usuarios SET email = ? WHERE id = ?;
+    `, [email, id])
+    .then(() => this.presentToast('Email modificado correctamente'))
+    .catch(error => this.presentToast('Error al modificar Email:' + error));
+  }
+
+  updatePassword(id: number, password: string) {
+    return this.db.executeSql(`
+      UPDATE usuarios SET password = ? WHERE id = ?;
+    `, [password, id])
+    .then(() => this.presentToast('Contraseña modificada correctamente'))
+    .catch(error => this.presentToast('Error al modificar Contraseña:' + error));
+  }
 
   private async presentToast(message: string) {
     const toast = await this.toastController.create({
