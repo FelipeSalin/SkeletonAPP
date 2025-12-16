@@ -34,6 +34,30 @@ export class LoginPage {
   }
 
   async login() {
+    // Verificar que el campo de correo no esté vacío
+    if (!this.usuario) {
+     this.mostrarAlerta('El campo de usuario no puede estar vacío.');
+     return;
+   }
+
+    // Verificar que el usuario tenga entre 3 a 8 carácteres
+    if ((this.usuario.length < 3) || (this.usuario.length > 8)) {
+      this.mostrarAlerta('El nombre de usuario debe tener entre 3 a 8 carácteres.');
+      return;
+    }
+
+    // Verificar que la contraseña no esté vacía
+    if (!this.password) {
+      this.mostrarAlerta('El campo de contraseña no puede estar vacío.');
+      return;
+    }
+
+    // Verificar que la contraseña tenga 4 carácteres
+    if (this.password.length != 4) {
+      this.mostrarAlerta('La contraseña debe tener 4 carácteres.');
+      return;
+    }
+
     const usuario = await this.dbService.validarUsuario(this.usuario, this.password);
     if (usuario) {
 

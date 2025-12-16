@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-company-logo',
   templateUrl: './company-logo.component.html',
   styleUrls: ['./company-logo.component.scss'],
-  standalone: true,
+  standalone: false,
 })
 export class CompanyLogoComponent {
 
