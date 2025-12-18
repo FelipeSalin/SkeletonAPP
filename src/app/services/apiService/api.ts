@@ -17,7 +17,7 @@ export class ApiService {
 
   // Se establece la base url del API a consumir
   // apiURL = 'https://jsonplaceholder.typicode.com'; // Fuente Original funciona solo get
-  private apiURL = 'http://10.0.2.2:3000'; /*'https://jsonplaceholder.typicode.com/comments' 'http://localhost:3000' */ // Ejecuta json-server -H ip .\dv.json para ejecutar un Fake APIRest
+  private apiURL = 'https://jsonplaceholder.typicode.com' /* 'http://10.0.2.2:3000'; 'https://jsonplaceholder.typicode.com/comments' 'http://localhost:3000' */ // Ejecuta json-server -H ip .\dv.json para ejecutar un Fake APIRest
 
   private handleError(error: HttpErrorResponse) {
     console.error('Api error:', error);

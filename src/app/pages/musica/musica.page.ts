@@ -14,18 +14,18 @@ export class MusicaPage implements OnInit {
   user: any;
   users: any;
   posts: any;
-  post: any={
+  post: any = {
     title: "",
     body: "",
     userId: null
   };
   compareWith: any;
 
-  constructor(private route: ActivatedRoute, 
-              private menu: MenuController,
-              private api: ApiService) { }
+  constructor(private route: ActivatedRoute,
+    private menu: MenuController,
+    private api: ApiService) { }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getUsuarios();
     this.getPosts();
   }
@@ -34,55 +34,57 @@ export class MusicaPage implements OnInit {
     this.menu.close("mainMenu");
   }
 
-  getUsuario(userId: any){
-    this.api.getUsuario(userId).subscribe((data)=>{
+  getUsuario(userId: any) {
+    this.api.getUsuario(userId).subscribe((data) => {
       console.log(data)
-      this.user=data;
+      this.user = data;
     });
   }
 
-  getUsuarios(){
-    this.api.getUsuarios().subscribe((data)=>{
-      this.users=data;
+  getUsuarios() {
+    this.api.getUsuarios().subscribe((data) => {
+      this.users = data;
     });
   }
 
-  getPosts(){
-    this.api.getPosts().subscribe((data)=>{
-      this.posts=data;
+  getPosts() {
+    this.api.getPosts().subscribe((data) => {
+      this.posts = data;
       this.posts.reverse();
-    },(error)=>{console.log(error);});
+    }, (error) => { console.log(error); });
   }
 
-  guardarPost(){
-    if(this.post.userId==null){
-      if(this.user==undefined){
-        console.log("Seleccione un usuario");
-        return;
-      }
-      this.post.userId=this.user.id;
-      this.api.createPost(this.post).subscribe(
-        ()=>{
-          console.log("Creado Correctamente");
-          this.getPosts();
-        },
-        error=>{
-          console.log("Error "+error)
-        }
-      );
-    }
-    else{
-      this.api.updatePost(this.post.id,this.post).subscribe(
-        ()=>{
-          console.log("Actualizado Correctamente");
-          this.getPosts();
-        },
-        error=>{
-          console.log("Error "+error)
-        }
-      );
-    }
+  guardarPost() {
+  if (!this.post.userId) {
+    this.post.userId = this.user.id;
   }
+
+  if (!this.post.id) {
+    // Crear post
+    this.api.createPost(this.post).subscribe(
+      (nuevoPost) => {
+        console.log("Creado Correctamente", nuevoPost);
+        this.posts.unshift(nuevoPost); 
+        this.limpiar();
+      },
+      error => console.log("Error " + error)
+    );
+  } else {
+    // Actualizar post (simulación)
+    this.api.updatePost(this.post.id, this.post).subscribe(
+      (updatedPost) => {
+        console.log("Actualizado Correctamente", updatedPost);
+        // Buscar el índice del post en el array local
+        const index = this.posts.findIndex((p: any) => p.id === this.post.id);
+        if (index > -1) {
+          this.posts[index] = { ...this.post }; // Reemplazamos los datos localmente
+        }
+        this.limpiar();
+      },
+      error => console.log("Error " + error)
+    );
+  }
+}
 
   /*
   setPost(_post: any){
@@ -94,22 +96,22 @@ export class MusicaPage implements OnInit {
 
 
   setPost(_post: any) {
-  this.post = _post;
-  // Busca el usuario correspondiente y asigna a this.user
-  this.user = this.users.find((u: any) => u.id === _post.userId);
-  this.compareWith = this.compareWithFn;
-}
+    this.post = _post;
+    // Busca el usuario correspondiente y asigna a this.user
+    this.user = this.users.find((u: any) => u.id === _post.userId);
+    this.compareWith = this.compareWithFn;
+  }
 
 
-  eliminarPost(_post: any){
+  eliminarPost(_post: any) {
     console.log("eliminar")
     this.api.deletePost(_post.id).subscribe(
-      success=>{
+      success => {
         console.log("Eliminado correctamente");
         this.getPosts();
       },
-      error=>{
-        console.log("Error "+error)
+      error => {
+        console.log("Error " + error)
       }
     )
   }
@@ -119,11 +121,11 @@ export class MusicaPage implements OnInit {
   };
 
   limpiar() {
-  this.post = {
-    title: "",
-    body: "",
-    userId: null
-  };
-  this.user = null; // también puedes limpiar el select
-}
+    this.post = {
+      title: "",
+      body: "",
+      userId: null
+    };
+    this.user = null; // también puedes limpiar el select
+  }
 }

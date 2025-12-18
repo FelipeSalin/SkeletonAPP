@@ -13,6 +13,7 @@ export class CamaraPage implements OnInit {
   constructor(private menu: MenuController) { }
 
   ngOnInit() {
+    this.menu.close("mainMenu");
   }
 
   takePicture = async () => {
