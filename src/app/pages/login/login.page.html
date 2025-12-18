@@ -27,13 +27,13 @@
       <ion-item class="input-item" lines="full">
         <ion-label position="floating" color="primary">Usuario</ion-label>
         <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
-        <ion-input type="text" [(ngModel)]="usuario" placeholder="Ingrese su nombre de usuario"></ion-input>
+        <ion-input type="text" name="usuario" [(ngModel)]="usuario" required placeholder="Ingrese su nombre de usuario"></ion-input>
       </ion-item>
 
       <ion-item class="input-item" lines="full">
         <ion-label position="floating" color="primary">Password</ion-label>
         <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
-        <ion-input type="password" [(ngModel)]="password" placeholder="Ingrese su contraseña"></ion-input>
+        <ion-input [type]="password" name="password" [(ngModel)]="password" placeholder="Ingrese su contraseña"></ion-input>
       </ion-item>
 
       <ion-row>
