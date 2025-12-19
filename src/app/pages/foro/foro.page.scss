@@ -6,20 +6,6 @@ h6 {
     text-align: center;
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.user-avatar {
-    width: 100px; /* Tamaño de la imagen */
-    height: 100px;
-    border-radius: 50%;
-}
-
 .logo-container {
     display: flex;
     justify-content: center;
@@ -30,13 +16,6 @@ h6 {
     width: 150px; /* Tamaño de la imagen */
     height: auto;
     animation: zoomIn 3s ease-in-out infinite alternate;
-}
-
-.recomendaciones-info {
-    text-align: center;
-    color: darkgreen;
-    animation: zoomIn 3s ease-in-out infinite alternate;
-    margin-top: 15%;
 }
 
 /* Animación de zoom suave */
@@ -63,20 +42,53 @@ ion-card-header {
     text-align: center;
 }
 
+ion-list-header {
+    text-align: center;
+}
+
 ion-item {
     --background: transparent;
-    background: #000000;
-    border-radius: 0px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+ion-select {
+  --color: #fff;            /* texto seleccionado */
+  --placeholder-color: #aaa;
+  --placeholder-opacity: 1;
+  --icon-color: #fff;       /* flecha */
+}
+
+ion-item ion-select::part(text) {
+  color: #fff !important;   /* Fuerza el texto dentro del Shadow DOM */
+}
+
+ion-item ion-select::part(placeholder) {
+  color: #aaa !important;   /* placeholder adentro */
+}
+
+ion-select .select-text {
+  color: #fff !important;
+}
+
+ion-select-option {
+  --background: #000; /* fondo negro */
+  --color: #fff; /* texto blanco */
 }
 
 ion-input {
     --padding-start: 10px;
     --color: #fff;
+    --placeholder-color: #aaa;
+    --placeholder-opacity: 1;
 }
 
-ion-select {
+ion-textarea {
     --color: #fff;
+    --placeholder-color: #aaa;
+    --placeholder-opacity: 1;
+}
+
+ion-label {
+    color: #ccc;
 }
 
 ion-button {

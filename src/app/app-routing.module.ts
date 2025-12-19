@@ -42,6 +42,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'foro',
+    loadChildren: () => import('./pages/foro/foro.module').then( m => m.ForoPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
   },

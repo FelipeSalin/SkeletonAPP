@@ -7,6 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { MusicaPageRoutingModule } from './musica-routing.module';
 import { CompanyLogoComponent } from '../../components/company-logo/company-logo.component';
 
+import { MatSliderModule } from '@angular/material/slider';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { MusicaPage } from './musica.page';
 
 @NgModule({
@@ -16,6 +23,11 @@ import { MusicaPage } from './musica.page';
     IonicModule,
     MusicaPageRoutingModule,
     CompanyLogoComponent,
+    MatSliderModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   declarations: [MusicaPage]
 })

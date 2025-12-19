@@ -1,0 +1,91 @@
+<!-- Comienza el Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <app-company-logo [companyLogo]="'Música Chilena'"></app-company-logo>
+    <ion-title slot="primary">Foro</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-title color="primary">Usuario</ion-title>
+    </ion-card-header>
+    <ion-item>
+      <ion-select placeholder="Seleccione usuario" [compareWith]="compareWith" [(ngModel)]="user">
+        <ion-select-option *ngFor="let usu of users" [value]="usu">{{usu.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+  <br>
+  <ion-card>
+    <ion-card-header>
+      <ion-title color="primary">Post</ion-title>
+    </ion-card-header>
+    <ion-item class="ion-padding-horizontal">
+      <ion-label>Título</ion-label>
+      <ion-input placeholder="Ingrese un título" [(ngModel)]="post.title"></ion-input>
+    </ion-item>
+    <ion-item class="ion-padding-horizontal">
+      <ion-label>Cuerpo</ion-label>
+      <ion-textarea placeholder="Ingrese cuerpo del post" [(ngModel)]="post.body"></ion-textarea>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col><ion-button shape="round" expand="block" (click)="limpiar()">Limpiar</ion-button></ion-col>
+        <ion-col><ion-button shape="round" expand="block" (click)="guardarPost()">Guardar</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card>
+    <ion-list-header>
+      <ion-title color="primary">Post Recientes</ion-title>
+    </ion-list-header>
+    <ion-list>
+      <ion-item *ngIf="!posts" class="ion-padding custom-skeleton">
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let post of posts">
+        <ion-label (click)="setPost(post)"><h4>{{post.title}}</h4><p>{{post.body}}</p></ion-label>
+        <ion-button (click)="eliminarPost(post)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<!-- 
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <ion-label>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+-->
+
+<!--
+  -- Formulario para agregar una nueva publicación --
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input [(ngModel)]="post.title" placeholder="Ingresa un título para el post"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Cuerpo</ion-label>
+    <ion-input [(ngModel)]="post.body" placeholder="Ingresa una descripción para el post"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="guardarPost()">Agregar publicación</ion-button>
+
+</ion-content>
+-->
