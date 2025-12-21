@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute, Route } from '@angular/router';
+import { Dbservice } from 'src/app/services/dbService/dbservice';
 
 @Component({
   selector: 'app-musica',
@@ -34,7 +35,8 @@ export class MusicaPage implements OnInit {
   constructor(private alertController: AlertController, 
               private router: Router, 
               private activateroute: ActivatedRoute, 
-              private menu: MenuController) {
+              private menu: MenuController,
+              private dbService: Dbservice) {
     this.activateroute.queryParams.subscribe( params =>{
       if(this.router.getCurrentNavigation()?.extras?.state){
 

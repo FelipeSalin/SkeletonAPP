@@ -13,7 +13,7 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
   <ion-title class="ion-padding-top ion-text-center">
     <ion-label>
-      <h1>¡Registra tu cuenta acá!</h1>
+      <h1>Tus datos</h1>
     </ion-label>
   </ion-title>
   <b class="ion-text-center">
@@ -25,25 +25,25 @@
     <ion-card-content>
 
       <ion-item class="ion-padding-horizontal">
-        <ion-label position="stacked" style="color: white;">Email</ion-label>
+        <ion-label style="color: white;">Email</ion-label>
+        <ion-text style="color: white;">{{usuario?.email}}</ion-text>
       </ion-item>
       <ion-item class="ion-padding-horizontal">
-        <ion-label position="stacked" style="color: white;">Nombre</ion-label>
+        <ion-label style="color: white;">Nombre</ion-label>
+        <ion-text style="color: white;">{{usuario?.nombre}}</ion-text>
       </ion-item>
       <ion-item class="ion-padding-horizontal">
-        <ion-label position="stacked" style="color: white;">Apellido</ion-label>
+        <ion-label style="color: white;">Apellido</ion-label>
+        <ion-text style="color: white;">{{usuario?.apellido}}</ion-text>
       </ion-item>
       <ion-item class="ion-padding-horizontal">
-        <ion-label position="stacked" style="color: white;">Nombre de usuario</ion-label>
+        <ion-label style="color: white;">Nombre de usuario</ion-label>
+        <ion-text style="color: white;">{{usuario?.usuario}}</ion-text>
       </ion-item>
-
-      <!-- Componente de Angular Material -->
-      <mat-form-field appearance="outline" style="width:100%; background-color: black;">
-        <mat-label style="color: white;">Fecha de nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <ion-item class="ion-padding-horizontal">
+        <ion-label style="color: white;">Fecha de nacimiento</ion-label>
+        <ion-text style="color: white;">{{usuario?.fecha_nacimiento}}</ion-text>
+      </ion-item>
 
     </ion-card-content>
 

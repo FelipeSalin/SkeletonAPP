@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class Dbservice {
 
   // observable
   private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  usuarioRecibido: string = 'usuario = ?';
 
   constructor(private sqlite: SQLite, private toastController: ToastController) {
     this.initDatabase();
@@ -42,6 +44,18 @@ export class Dbservice {
       )`, [])
       .then(() => this.presentToast('Table created'))
       .catch(error => this.presentToast('Error creating table' + error));
+  }
+
+  obtenerUsuario(id: number): Promise<Usuario | null> {
+    //retorno la ejecución del select
+    return this.db.executeSql('SELECT * FROM usuarios WHERE id = ?', [id]).then(res => {
+      //si cuento más de 0 filas en el resultSet entonces agrego los registros al items
+      if (res.rows.length > 0) {
+        return res.rows.item(0) as Usuario;
+      } else {
+        return null;
+      }
+    });
   }
 
   validarUsuario(usuario: string, password: string) {
