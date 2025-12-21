@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute, Route } from '@angular/router';
+import { Dbservice } from 'src/app/services/dbService/dbservice';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ import { Router, ActivatedRoute, Route } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
+  usuario?: Usuario;
   usuarioRecibido: string='';
   passwordRecibido: string='';
 
@@ -34,7 +37,8 @@ export class HomePage implements OnInit {
   constructor(private alertController: AlertController, 
               private router: Router, 
               private activateroute: ActivatedRoute, 
-              private menu: MenuController) {
+              private menu: MenuController,
+              private dbService: Dbservice) {
     this.activateroute.queryParams.subscribe( params =>{
       if(this.router.getCurrentNavigation()?.extras?.state){
 
@@ -51,10 +55,17 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-
       this.menu.close("mainMenu");
-
     }
+
+  ionViewWillEnter() {
+    const idUsuarioLogueado = 1; // aquí va el ID real del login
+    this.dbService.obtenerUsuario(idUsuarioLogueado).then(user => {
+      if (user) {
+        this.usuario = user;
+      }
+    });
+  }
 
   /**
    * Metodo limpíar recorre un objeto y se define el 
